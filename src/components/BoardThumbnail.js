@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { deleteBoard } from "../actions";
 
 const Thumbnail = styled.div`
   height: 280px;
@@ -20,13 +22,27 @@ const Title = styled.h4`
   text-decoration: none;
 `;
 
-const BoardThumbnail = ({ title }) => {
+const BoardThumbnail = ({ title, id, dispatch }) => {
   console.log(title);
+  const handleDeleteCard = e => { 
+    e.preventDefault()
+    console.log(id);
+    console.log(dispatch);
+    dispatch(deleteBoard(id));
+    // dispatch(deleteCard(id, listID));
+  };
   return (
     <Thumbnail>
       <Title>{title}</Title>
+      <button fontSize="small" onClick={handleDeleteCard}>
+        delete
+      </button>
     </Thumbnail>
   );
 };
 
-export default BoardThumbnail;
+const mapStateToProps = state => ({
+  boards: state.boards
+});
+
+export default connect(mapStateToProps)(BoardThumbnail);

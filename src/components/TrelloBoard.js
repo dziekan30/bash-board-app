@@ -35,8 +35,6 @@ const DeleteButton = styled(Icon)`
   }
 `;
 
-// TODO: Fix performance issue
-
 class TrelloBoard extends PureComponent {
   componentDidMount() {
     // set active trello board here
@@ -45,16 +43,13 @@ class TrelloBoard extends PureComponent {
     this.props.dispatch(setActiveBoard(boardID));
   }
 
+  handleDeleteBoard = () => {
+    // dispatch(deleteBoard(boardID));
+    console.log("delete")
+  };
+
   onDragEnd = result => {
     const { destination, source, draggableId, type, boardID, id, dispatch } = result;
-
-    // const handleDeleteBoard = () => {
-    //   dispatch(deleteBoard(boardID));
-    // };
-    const handleDeleteBoard = e => {
-      console.log(boardID);
-      dispatch(deleteBoard(id, boardID))
-    };
 
     if (!destination) {
       return;
@@ -85,9 +80,9 @@ class TrelloBoard extends PureComponent {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Link to="/">Go Back</Link>
         <h2>{board.title}</h2>
-        {/* <DeleteButton onMouseDown={handleDeleteBoard}>
+        <DeleteButton onClick={this.handleDeleteBoard}>
           delete
-        </DeleteButton> */}
+        </DeleteButton>
         <Droppable droppableId="all-lists" direction="horizontal" type="list">
           {provided => (
             <ListsContainer

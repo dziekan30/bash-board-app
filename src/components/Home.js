@@ -88,7 +88,7 @@ const Home = ({ boards, boardOrder, id, listID, dispatch }) => {
   const renderBoards = () => {
     return boardOrder.map(boardID => {
       const board = boards[boardID];
-
+      console.log(board)
       return (
         <div>
           <Link
@@ -96,14 +96,11 @@ const Home = ({ boards, boardOrder, id, listID, dispatch }) => {
             to={`/${board.id}`}
             style={{ textDecoration: "none" }}
           >
-            <DeleteButton fontSize="small" onClick={handleDeleteCard}>
-              delete
-            </DeleteButton>
-            <BoardThumbnail {...board} />
+            <BoardThumbnail {...board} 
+            />
           </Link>
+
           <div>
-
-
           </div>
         </div>
       );
