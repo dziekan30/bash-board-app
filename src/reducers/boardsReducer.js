@@ -55,7 +55,9 @@ const boardsReducer = (state = initialState, action) => {
       const newState = state;
       delete newState[boardID];
       console.log(newState);
-      return newState;
+      return (newState,
+        localStorage.removeItem('key')
+      );
     }
 
     case CONSTANTS.ADD_BOARD: {
