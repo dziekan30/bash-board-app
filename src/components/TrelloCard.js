@@ -90,13 +90,13 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
             onDoubleClick={() => setIsEditing(true)}
           >
             <Card>
-              <EditButton
+              <EditButton className="trash"
                 onMouseDown={() => setIsEditing(true)}
                 fontSize="small"
               >
                 edit
               </EditButton>
-              <DeleteButton fontSize="small" onMouseDown={handleDeleteCard}>
+              <DeleteButton className="trash" fontSize="small" onMouseDown={handleDeleteCard}>
                 delete
               </DeleteButton>
 

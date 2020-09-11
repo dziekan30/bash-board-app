@@ -80,7 +80,7 @@ class TrelloBoard extends PureComponent {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Link to="/">Go Back</Link>
         <h2>{board.title}</h2>
-        <DeleteButton onClick={this.handleDeleteBoard}>
+        <DeleteButton className="trash" onClick={this.handleDeleteBoard}>
           delete
         </DeleteButton>
         <Droppable droppableId="all-lists" direction="horizontal" type="list">

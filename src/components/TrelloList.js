@@ -8,7 +8,7 @@ import { editTitle, deleteList } from "../actions";
 import Icon from "@material-ui/core/Icon";
 
 const ListContainer = styled.div`
-  background-color: #c3b6bd;
+  background-color: #fd28c7;
   border-radius: 3px;
   width: 300px;
   padding: 8px;
@@ -105,7 +105,7 @@ const TrelloList = ({ title, cards, listID, index, dispatch }) => {
                   ) : (
                       <div className="" onClick={() => setIsEditing(true)}>
                         <ListTitle>{listTitle}</ListTitle>
-                        <DeleteButton onClick={handleDeleteList}>
+                        <DeleteButton className="trash" onClick={handleDeleteList}>
                           delete
                       </DeleteButton>
                       </div>

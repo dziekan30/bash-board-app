@@ -51,13 +51,12 @@ const boardsReducer = (state = initialState, action) => {
 
     case CONSTANTS.DELETE_BOARD: {
       const { boardID } = action.payload;
-      console.log(boardID);
+      // console.log(boardID);
       const newState = state;
+      // console.log(newState)
       delete newState[boardID];
-      console.log(newState);
-      return (newState,
-        localStorage.removeItem('key')
-      );
+      // console.log(newState);
+      return { ...newState }
     }
 
     case CONSTANTS.ADD_BOARD: {
