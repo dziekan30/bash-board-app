@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { addBoard, deleteCard } from "../actions";
 import BoardThumbnail from "./BoardThumbnail";
-import Icon from "@material-ui/core/Icon";
-
 
 const Thumbnails = styled.div`
   flex: 1;
@@ -16,27 +14,7 @@ const Thumbnails = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 `;
-const CardContainer = styled.div`
-  margin: 0 0 8px 0;
-  position: relative;
-  max-width: 100%;
-  word-wrap: break-word;
-`;
 
-const DeleteButton = styled(Icon)`
-  position: absolute;
-  display: none;
-  right: 5px;
-  bottom: 5px;
-  opacity: 0.5;
-  ${CardContainer}:hover & {
-    display: block;
-    cursor: pointer;
-  }
-  &:hover {
-    opacity: 0.8;
-  }
-`;
 
 const HomeContainer = styled.div`
   display: flex;
@@ -86,17 +64,18 @@ const Home = ({ boards, boardOrder, id, listID, dispatch }) => {
 
 
   const renderBoards = () => {
-    return boardOrder.map(boardID => {
+    return Object.keys(boards).map(boardID => {
       const board = boards[boardID];
-      console.log(board)
+      console.log(boards)
+
       return (
         <div>
           <Link
             key={boardID}
             to={`/${board.id}`}
-            style={{ textDecoration: "none" }}
+            style={{ textDecoration: "none", textAlign: "center" }}
           >
-            <BoardThumbnail {...board} 
+            <BoardThumbnail {...board}
             />
           </Link>
 

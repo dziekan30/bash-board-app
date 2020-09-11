@@ -1,3 +1,20 @@
 * {
   box-sizing: border-box;
+  /* margin: 2%; */
+}
+.trash {
+  color: #cc0099;
+}
+
+.border {
+  border: 20px solid #ed00b1;
+  background-color: white;
+}
+.box {
+/* margin: 2%; */
+padding: 10px;
+}
+.list-background {
+  color: #fd28c7;
+  background-color: #fd28c7;
 }
