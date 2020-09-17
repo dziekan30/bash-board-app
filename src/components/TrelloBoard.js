@@ -78,7 +78,7 @@ class TrelloBoard extends PureComponent {
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <Link style={{color: "#e806e8"}} to="/">Go Back</Link>
+        <Link to="/">Go Back</Link>
         <h2>{board.title}</h2>
         <DeleteButton className="trash" onClick={this.handleDeleteBoard}>
           delete
