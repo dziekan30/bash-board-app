@@ -17,7 +17,7 @@ const Thumbnail = styled.div`
   box-shadow: 0 2px 4px grey;
 `;
 
-const Title = styled.h4`
+const Title = styled.h3`
   color: white;
   text-decoration: none;
 `;

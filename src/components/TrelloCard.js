@@ -9,6 +9,7 @@ import TrelloForm from "./TrelloForm";
 import { editCard, deleteCard } from "../actions";
 import { connect } from "react-redux";
 import TrelloButton from "./TrelloButton";
+import Speech from 'react-speech';
 
 const CardContainer = styled.div`
   margin: 0 0 8px 0;
@@ -46,6 +47,76 @@ const DeleteButton = styled(Icon)`
     opacity: 0.8;
   }
 `;
+
+const style = {
+      container: {
+        width: '100%'
+      },
+      text: {
+        width: '100%',
+        display: ''
+      },
+      play: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      },
+      stop: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      },
+      pause: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      },
+      resume: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      }
+    };
 
 const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -102,6 +173,14 @@ const TrelloCard = React.memo(({ text, id, listID, index, dispatch }) => {
 
               <CardContent>
                 <Typography>{text}</Typography>
+                <Speech
+                  stop={true}
+                  play={true}
+                  pause={true}
+                  resume={true}
+                  styles={style}
+                  text={text}
+                />
               </CardContent>
             </Card>
           </CardContainer>

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { editTitle, deleteList } from "../actions";
 import Icon from "@material-ui/core/Icon";
+import Speech from 'react-speech';
 
 const ListContainer = styled.div`
   background-color: #fd28c7;
@@ -44,12 +45,84 @@ const DeleteButton = styled(Icon)`
   }
 `;
 
-const ListTitle = styled.h4`
+const ListTitle = styled.h3`
   transition: background 0.3s ease-in;
   ${TitleContainer}:hover & {
     background: #ccc;
   }
 `;
+
+const style = {
+      container: {
+        width: '100%'
+      },
+      text: {
+        width: '100%',
+        display: ''
+      },
+      play: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      },
+      stop: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      },
+      pause: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      },
+      resume: {
+        hover: {
+          backgroundColor: 'GhostWhite'
+        },
+        button: {
+          width: '15%',
+          height: '15%',
+          cursor: 'pointer',
+          pointerEvents: 'none',
+          outline: 'none',
+          backgroundColor: 'Gainsboro',
+          border: 'solid 1px rgba(255,255,255,1)',
+          borderRadius: 6
+        }
+      }
+    };
+
+let listString = "";
 
 const TrelloList = ({ title, cards, listID, index, dispatch }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -104,7 +177,7 @@ const TrelloList = ({ title, cards, listID, index, dispatch }) => {
                     renderEditInput()
                   ) : (
                       <div className="" onClick={() => setIsEditing(true)}>
-                        <ListTitle>{listTitle}</ListTitle>
+                        <ListTitle>{listString = listTitle}</ListTitle>
                         <DeleteButton className="trash" onClick={handleDeleteList}>
                           delete
                       </DeleteButton>
@@ -113,24 +186,37 @@ const TrelloList = ({ title, cards, listID, index, dispatch }) => {
                 </div>
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   {cards.map((card, index) => (
+                  <div>
                     <TrelloCard
                       key={card.id}
                       text={card.text}
-                      id={card.id}
                       index={index}
+                      listString={listString += `Task ${(index + 1).toString()} ${card.text}`}
+                      id={card.id}
                       listID={listID}
                     />
+                  </div>
                   ))}
                   {provided.placeholder}
                   <TrelloCreate listID={listID} />
                 </div>
+                <Speech
+                  stop={true}
+                  play={true}
+                  pause={true}
+                  resume={true}
+                  styles={style}
+                  text={listString}
+                />
               </div>
             )}
           </Droppable>
+         {listString=""}
         </ListContainer>
       )}
     </Draggable>
-  );
+  );  
 };
+
 
 export default connect()(TrelloList);
