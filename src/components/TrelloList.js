@@ -45,7 +45,7 @@ const DeleteButton = styled(Icon)`
   }
 `;
 
-const ListTitle = styled.h4`
+const ListTitle = styled.h3`
   transition: background 0.3s ease-in;
   ${TitleContainer}:hover & {
     background: #ccc;

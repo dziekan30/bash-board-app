@@ -27,7 +27,6 @@ const CreateTitle = styled.h3`
   font-size: 48px;
   color: white;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
 `;
 
 const CreateInput = styled.input`
@@ -89,12 +88,13 @@ const Home = ({ boards, boardOrder, id, listID, dispatch }) => {
   const renderCreateBoard = () => {
     return (
       <form onSubmit={handleSubmit} style={{ textAlign: "center" }}>
-        <CreateTitle>Create a new Board</CreateTitle>
+        <CreateTitle>Create a New Board</CreateTitle>
         <CreateInput
           onChange={handleChange}
           value={newBoardTitle}
-          placeholder="Your boards title..."
+          placeholder="Your board's title..."
           type="text"
+          style={{fontFamily: "Impact, Charcoal, sansSerif"}}
         />
       </form>
     );
